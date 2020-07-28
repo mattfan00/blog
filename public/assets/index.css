@@ -6,7 +6,7 @@ body {
   font-family: Avenir Next;
 }
 .main {
-  width: 30rem;
+  width: 35rem;
   margin-top: 8rem;
 }
 
@@ -28,7 +28,12 @@ body {
   font-weight: 700;
 }
 
-.content p  {
+.content p, .content ol  {
   font-size: 0.85rem;
   line-height: 1.65;
+}
+
+.content ol {
+  margin: 2rem 0; 
+  padding: 0 3rem; 
 }
