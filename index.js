@@ -2,8 +2,10 @@ const fs = require('fs');
 const fm = require('front-matter');
 const md = require('markdown-it')('commonmark');
 
+const postTemplate = require('./template/post');
 
-posts = fs.readdirSync('./posts')
+
+fs.readdirSync('./posts')
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
     const content = fm(rawText);
@@ -12,11 +14,12 @@ posts = fs.readdirSync('./posts')
     return content;
   })
   .forEach(post => {
-    const postDir = post.path.slice(0, -3);
-    if (fs.existsSync(`./public/${postDir}`)) {
-      console.log('exists');
-    } else {
-      console.log('doesnt exist');
+    const postDir = `./public/${post.path.slice(0, -3)}`;
+    if (!fs.existsSync(postDir)) {
+      console.log(post.attributes.title + ' doesnt exist');
+      fs.mkdirSync(postDir);
+      const postHTML = postTemplate(post);
+      fs.writeFileSync(`${postDir}/index.html`, postHTML);
     }
   });
   
