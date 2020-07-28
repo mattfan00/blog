@@ -14,13 +14,13 @@ fs.readdirSync('./posts')
     return content;
   })
   .forEach(post => {
-    const postDir = `./public/${post.path.slice(0, -3)}`;
+    const postDir = `./public/blog/${post.path.slice(0, -3)}`;
     if (!fs.existsSync(postDir)) {
       console.log(post.attributes.title + ' doesnt exist');
       fs.mkdirSync(postDir);
-      const postHTML = postTemplate(post);
-      fs.writeFileSync(`${postDir}/index.html`, postHTML);
     }
+    const postHTML = postTemplate(post);
+    fs.writeFileSync(`${postDir}/index.html`, postHTML);
   });
   
 

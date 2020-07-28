@@ -5,4 +5,4 @@ date: "7/26/2020"
 
 ---
 
-# another test for you people
+hey this is my first blog post

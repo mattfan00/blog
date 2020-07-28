@@ -1,5 +1,4 @@
-function postTemplate(post) {
-  return `
+
     <!DOCTYPE html>
     <html>
       <head>
@@ -14,16 +13,13 @@ function postTemplate(post) {
 
           <div class="content"> 
             <div class="title-section">
-              <h2>${post.attributes.title}</h2>
-              <div>${post.attributes.date}</div>
+              <h2>this is the second test article</h2>
+              <div>7/26/2020</div>
             </div>
-            ${post.body}
+            <p>hey this is my first blog post</p>
+
           </div>
         </div>
       </body>
     </html>
-  `
-}
-
-
-module.exports = postTemplate;
+  
