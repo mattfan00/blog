@@ -8,6 +8,7 @@ body {
 .main {
   width: 35rem;
   margin-top: 8rem;
+  margin-bottom: 10rem;
 }
 
 .header {
@@ -36,4 +37,8 @@ body {
 .content ol {
   margin: 2rem 0; 
   padding: 0 3rem; 
+}
+
+.content li:not(:last-child) {
+  margin-bottom: 0.5rem;
 }
