@@ -15,6 +15,22 @@ body {
   margin-bottom: 2rem;
 }
 
+
+/* ==================== Directory ================================ */
+
+.directory {
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+/* ==================== Posts ================================ */
+
 .title-section {
   display: flex;
   align-items: baseline;

@@ -3,9 +3,11 @@ const fm = require('front-matter');
 const md = require('markdown-it')('commonmark');
 
 const postTemplate = require('./template/post');
+const directoryTemplate = require('./template/directory');
 
 
-fs.readdirSync('./posts')
+// create posts
+posts = fs.readdirSync('./posts')
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
     const content = fm(rawText);
@@ -13,14 +15,18 @@ fs.readdirSync('./posts')
     content.path = postPath;
     return content;
   })
-  .forEach(post => {
-    const postDir = `./public/blog/${post.path.slice(0, -3)}`;
+  .map(post => {
+    const postDir = `./public/${post.path.slice(0, -3)}`;
     if (!fs.existsSync(postDir)) {
       console.log(post.attributes.title + ' doesnt exist');
       fs.mkdirSync(postDir);
     }
     const postHTML = postTemplate(post);
     fs.writeFileSync(`${postDir}/index.html`, postHTML);
+
+    return post;
   });
   
-
+// create home directory
+const directoryHTML = directoryTemplate(posts);
+fs.writeFileSync('./public/index.html', directoryHTML);
