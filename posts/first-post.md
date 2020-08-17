@@ -15,7 +15,7 @@ For now, let's get into why I decided to create a blog.
 
 There are two main resources that finally pushed me to create a blog.
 
-The first resource is [Pine Wu's blog](https://blog.matsu.io/). If you take a look at his blog, you can see that a lot of the styling I used for my blog is inspired (stolen?) from his. I really enjoyed the visually pleasing minimalistic style that he incorporates, and I was inspired to use the same approach but with my own twist. More importantly though, I enjoyed reading the different topics that he touches upon, and it allowed me to gain more insight into his life outside of the work he does in his GitHub and I hope to do the same.
+The first resource is [Pine Wu's blog](https://blog.matsu.io/). If you take a look at his, you can see that a lot of the styling I used for my blog is inspired (stolen?) from his. I really enjoyed the visually pleasing minimalistic style that he incorporates, and I was inspired to use the same approach but with my own twist. More importantly though, I enjoyed reading the different topics that he touches upon, and it allowed me to gain more insight into his life outside of the work he does in his GitHub and I hope to do the same.
 
 The second resource is one of my friends from college, Mark Bacon ([here](https://www.youtube.com/channel/UCh7mi5sI3BSzKReLzXpgimA) is his YouTube channel). Mark's passion in making videos that he likes making definitely gave me the confidence to start writing about what I want to write about. The other day he was actually telling me about how he finds it awkward filming some of his videos, but is always surprised by great response that he gets back from the community. So even though it might feel embarassing putting yourself out there, it's only because you are perceive it that way while others may not. 
 
@@ -48,6 +48,6 @@ The reason I included my ideas about React is to show that making things the tra
 
 ### conclusion
 
-This blog post is starting to get very long and might not make much sense towards the end so I will start wrapping it up now (I don't plan on making these posts that long in the future). If you got to the end, thank you for sticking around! I hope that you didn't force yourself to read all of this and actually found it enjoyable :) 
+This post is starting to get very long and might not make much sense towards the end so I will start wrapping it up now (I don't plan on making these posts that long in the future). If you got to the end, thank you for sticking around! I hope that you didn't force yourself to read all of this and actually found it enjoyable :) 
 
 Stay tuned for the next one! 
