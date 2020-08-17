@@ -10,14 +10,14 @@ function directoryTemplate(posts) {
     <body>
       <div class="main">
         <div class="header">
-          <a href="/public">Blog</a> 
+          <a href="/">Blog</a> 
           <a href="/">About</a>
         </div>
 
         <div class="directory">
           ${posts.map(post => `
             <div class="row">
-              <a href='/public/${post.path.slice(0, -3)}'>${post.attributes.title}</a>
+              <a href='/${post.path.slice(0, -3)}'>${post.attributes.title}</a>
               <div>${post.attributes.date}</div>
             </div>
           `)}
