@@ -22,11 +22,13 @@ body {
   color: black;
   font-weight: 600;
   font-size: 0.85rem;
-  background-color: rgb(221, 221, 221);
   padding: 6px 12px;
   border-radius: 8px;
   text-decoration: none;
-  margin-right: 7px 
+}
+
+.selected {
+  background-color: rgb(221, 221, 221) !important;
 }
 
 .directory {

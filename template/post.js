@@ -10,7 +10,7 @@ function postTemplate(post) {
     <body>
       <div class="main">
         <div class="header">
-          <a href="/">Blog</a> 
+          <a class="selected" href="/">Blog</a> 
           <a href="/">About</a>
         </div>
 
