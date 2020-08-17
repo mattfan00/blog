@@ -4,10 +4,12 @@ const md = require('markdown-it')('commonmark');
 
 const postTemplate = require('./template/post');
 const directoryTemplate = require('./template/directory');
+const aboutTemplate = require('./template/about');
 
 
 // create posts
 posts = fs.readdirSync('./posts')
+  .filter(postPath => postPath !== "about.md")
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
     const content = fm(rawText);
@@ -30,3 +32,24 @@ posts = fs.readdirSync('./posts')
 // create home directory
 const directoryHTML = directoryTemplate(posts);
 fs.writeFileSync('./public/index.html', directoryHTML);
+
+// create about page
+aboutPosts = fs.readdirSync('./posts')
+  .filter(postPath => postPath === "about.md")
+  .map(postPath => {
+    const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
+    const content = fm(rawText);
+    content.body = md.render(content.body);
+    content.path = postPath;
+    return content;
+  })
+
+let aboutPost = aboutPosts[0]
+
+const aboutDir = `./public/about`;
+if (!fs.existsSync(aboutDir)) {
+  fs.mkdirSync(aboutDir);
+}
+
+const aboutHTML = aboutTemplate(aboutPost)
+fs.writeFileSync('./public/about/index.html', aboutHTML);

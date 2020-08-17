@@ -10,8 +10,8 @@ function directoryTemplate(posts) {
     <body>
       <div class="main">
         <div class="header">
-          <a class="selected" href="/">Blog</a> 
-          <a href="/">About</a>
+          <a class="selected" href="./">Blog</a> 
+          <a href="./about">About</a>
         </div>
 
         <div class="directory">
