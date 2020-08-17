@@ -15,3 +15,5 @@ Now that you know a little more about me, let's get into what this blog is about
 So hopefully you enjoy reading about what I have to say and sort of the journey I am taking. Here is my [GitHub](https://github.com/mattfan00) if you want to take a look at some of the things I have been working on. 
 
 Thanks for stopping by and enjoy!
+
+(**P.S.** I use a turtle icon as my website icon because I really liked turtles growing up. This great icon is provided by [Freepik](https://www.flaticon.com/authors/freepik) via [flaticon](https://www.flaticon.com/home))
