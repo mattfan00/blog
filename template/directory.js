@@ -20,7 +20,7 @@ function directoryTemplate(posts) {
               <a href='./${post.path.slice(0, -3)}'>${post.attributes.title}</a>
               <div>${post.attributes.date}</div>
             </div>
-          `)}
+          `).join("")}
         </div>
       </div>
     </body>

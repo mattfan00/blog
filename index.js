@@ -30,7 +30,10 @@ posts = fs.readdirSync('./posts')
   });
   
 // create home directory
-const directoryHTML = directoryTemplate(posts);
+sortedPosts = posts.sort((a, b) => {
+  return new Date(b.attributes.date) - new Date(a.attributes.date);
+})
+const directoryHTML = directoryTemplate(sortedPosts);
 fs.writeFileSync('./public/index.html', directoryHTML);
 
 // create about page

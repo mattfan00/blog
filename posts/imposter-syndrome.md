@@ -1,0 +1,13 @@
+---
+
+title: "the imposter"
+date: "9/29/2020"
+
+---
+
+In this blog post, I would like to write about something that I and lots of other people have experienced before: imposter syndrome. I wanted to write about this subject mostly to get my thoughts down in writing and so that I can look back on it and reassure future me. Hopefully this helps you as well :) 
+
+### the spark
+
+Most recently I have been extremely lucky to be able to have accepted a full-time offer at a great company. When I first got the offer, I was so happy - I really enjoyed interning there over the summer and would love to have a full-time opportunity to work there. I was only given two weeks to make my decision, and after the two weeks were up, I ended up clicking the accept button. Naturally, if anyone else was in my position, they would be celebrating and looking forward to having a relaxing senior year. But for some reason, after clicking that button, I started to look for part-time internship opportunities that I can do during my last year of college. 
+
