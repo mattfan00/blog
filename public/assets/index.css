@@ -12,24 +12,27 @@ body {
 }
 
 .header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
-
-
-/* ==================== Directory ================================ */
 
 .header a {
   color: black;
   font-weight: 600;
   font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: .4em .8em;
+  border-radius: .3em;
   text-decoration: none;
 }
 
 .selected {
   background-color: rgb(221, 221, 221) !important;
 }
+
+/* ==================== Links ================================ */
+
+
+/* ==================== Directory ================================ */
+
 
 .directory {
   font-size: 0.85rem;

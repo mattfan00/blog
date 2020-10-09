@@ -10,8 +10,8 @@ function aboutTemplate(post) {
     <body>
       <div class="main">
         <div class="header">
-          <a href="../">Blog</a> 
-          <a class="selected" href="../about">About</a>
+          <a href="../">blog</a> 
+          <a class="selected" href="../about">about</a>
         </div>
 
         <div class="content"> 
