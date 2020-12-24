@@ -6,6 +6,7 @@ function aboutTemplate(post) {
       <title>Matthew Fan's Blog</title>
       <link rel="stylesheet" href="../assets/index.css">
       <link rel="icon" href="../assets/turtle.png">
+      <script defer src="../assets/index.js"></script>
     </head>
     <body class="light">
       <div class="main">
@@ -24,8 +25,6 @@ function aboutTemplate(post) {
           ${post.body}
         </div>
       </div>
-
-      <script src="../assets/index.js"></script>
     </body>
   </html>
   `
