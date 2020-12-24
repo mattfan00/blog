@@ -1,8 +1,12 @@
 const toggleTheme = document.querySelector("#checkbox");
 const body = document.querySelector("body")
+const theme = localStorage.getItem("theme")
 
-if (localStorage.getItem("theme") == "dark") {
-    body.classList.replace("light", "dark")
+if (theme == "light") {
+    body.classList.add("light")
+    toggleTheme.checked = false
+} else {
+    body.classList.add("dark")
     toggleTheme.checked = true
 }
 

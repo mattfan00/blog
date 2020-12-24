@@ -8,7 +8,7 @@ function aboutTemplate(post) {
       <link rel="icon" href="../assets/turtle.png">
       <script defer src="../assets/index.js"></script>
     </head>
-    <body class="light">
+    <body>
       <div class="main">
         <div class="theme-switcher">
           <label class="switch" for="checkbox">
