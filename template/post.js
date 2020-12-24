@@ -7,14 +7,20 @@ function postTemplate(post) {
       <link rel="stylesheet" href="../assets/index.css">
       <link rel="icon" href="../assets/turtle.png">
     </head>
-    <body>
+    <body class="light">
       <div class="main">
+        <div class="theme-switcher">
+          <label class="switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+          </label>
+        </div>
         <div class="header">
-          <a class="selected" href="../">blog</a> 
+          <a class="selected" href="../">blog</a>
           <a href="../about">about</a>
         </div>
 
-        <div class="content"> 
+        <div class="content">
           <div class="title-section">
             <h2>${post.attributes.title}</h2>
             <div>${post.attributes.date}</div>
@@ -22,6 +28,8 @@ function postTemplate(post) {
           ${post.body}
         </div>
       </div>
+
+      <script src="../assets/index.js"></script>
     </body>
   </html>
   `
