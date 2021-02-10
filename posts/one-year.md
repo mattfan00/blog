@@ -2,6 +2,7 @@
 
 title: "one year"
 date: "Dec 24, 2020"
+description: "celebrating my first year of heavy coding by sharing tips i picked up along the way :D"
 
 ---
 

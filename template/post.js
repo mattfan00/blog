@@ -23,7 +23,7 @@ function postTemplate(post) {
 
         <div class="content">
           <div class="title-section">
-            <h2>${post.attributes.title}</h2>
+            <h2><a href='./'>${post.attributes.title}</a></h2>
             <div>${post.attributes.date}</div>
           </div>
           ${post.body}

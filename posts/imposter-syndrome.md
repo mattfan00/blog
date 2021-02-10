@@ -2,6 +2,7 @@
 
 title: "the imposter"
 date: "Sep 29, 2020"
+description: "how you can benefit from the imposter syndrome."
 
 ---
 
