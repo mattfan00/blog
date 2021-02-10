@@ -1,7 +1,7 @@
 ---
 
 title: "one year"
-date: "12/24/2020"
+date: "Dec 24, 2020"
 
 ---
 

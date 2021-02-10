@@ -1,7 +1,7 @@
 ---
 
 title: "first post"
-date: "7/27/2020"
+date: "Jul 27, 2020"
 
 ---
 
