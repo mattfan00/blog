@@ -30,6 +30,7 @@ a {
 
 .main {
   max-width: 35rem;
+  width: 100%;
   margin: 0 auto;
   margin-top: 8rem;
   margin-bottom: 10rem;
