@@ -20,6 +20,7 @@ body {
   align-items: center;
 
   font-family: Avenir Next;
+  margin: 15px;
   /* transition: .2s; */
 }
 
@@ -28,7 +29,8 @@ a {
 }
 
 .main {
-  width: 35rem;
+  max-width: 35rem;
+  margin: 0 auto;
   margin-top: 8rem;
   margin-bottom: 10rem;
 }
@@ -165,4 +167,11 @@ input:checked + .slider:before {
 
 .content li:not(:last-child) {
   margin-bottom: 0.5rem;
+}
+
+/* ==================== Responsive ================================ */
+@media screen and (max-width: 800px) {
+  .main {
+    margin: 3rem auto;
+  }
 }
