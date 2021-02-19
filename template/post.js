@@ -32,6 +32,20 @@ function postTemplate(post) {
           </div>
           ${post.body}
         </div>
+
+        ${post.attributes.related_content ? `
+          <div class="related-content">
+            <h3>related content</h3>
+            <ul>
+              ${post.attributes.related_content.map(related => `
+                <li>
+                  <a href="${related.url}">${related.name}</a>
+                  ${related.description ? `- ${related.description}` : ""}
+                </li>
+              `).join("")}
+            </ul>
+          </div>
+        `: ""}
       </div>
     </body>
   </html>

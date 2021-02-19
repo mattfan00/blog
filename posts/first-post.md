@@ -3,6 +3,13 @@
 title: "first post"
 date: "Jul 27, 2020"
 description: "why i started a blog and some thoughts about technologies."
+related_content:
+  - name: "Pine Wu's blog"
+    url: "https://blog.matsu.io/"
+    description: "posts about Vue and life"
+  - name: "Mark Bacon YouTube channel"
+    url: "https://www.youtube.com/channel/UCh7mi5sI3BSzKReLzXpgimA"
+    description: "great insight into productivity and motivation"
 
 ---
 
