@@ -28,6 +28,6 @@ However, all of this has to be in moderation. Too little confidence can cause yo
 
 ### wrapping it up
 
-A lot of this post is very high level advice and introspection, but I hope you got something out of it! I believe that imposter syndrome can be used to your advantage - use it to push you to continuously reach for your goals. The ones who are comfy at a young age are the ones at a disadvantage. And if you experience too much burnout from it, remember to look back at how much you have accomplished so far - you are doing amazing and only at the first stage of your career, there is plenty of time to achieve what you want :)
+A lot of this post is very high level advice and introspection, but I hope you got something out of it! I believe that imposter syndrome can be used to your advantage - use it to push you to continuously reach for your goals. Being too comfy at a young age can be disadvantagous to your growth. And if you experience too much burnout from it, remember to look back at how much you have accomplished so far - you are doing amazing and only at the first stage of your career, there is plenty of time to achieve what you want :)
 
 See y'all in the next one!
