@@ -22,7 +22,7 @@ function directoryTemplate(posts) {
           ${posts.map(post => `
             <div class="row">
               <div class="title-section">
-                <h2><a href='./${post.path.slice(0, -3)}'>${post.attributes.title}</a></h2>
+                <h3 class="title"><a href='./${post.path.slice(0, -3)}'>${post.attributes.title}</a></h3>
                 <div>${post.attributes.date}</div>
               </div>
               <div class="description">

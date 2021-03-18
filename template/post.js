@@ -19,11 +19,18 @@ function postTemplate(post) {
         </div>
 
         <div class="content">
-          <div class="title-section">
-            <h2><a href='./'>${post.attributes.title}</a></h2>
-            <div>${post.attributes.date}</div>
+          <div class="row">
+            <div class="title-section">
+              <h3 class="title"><a href='./'>${post.attributes.title}</a></h3>
+              <div>${post.attributes.date}</div>
+            </div>
+            <div class="description">
+              ${post.attributes.description}
+            </div>
           </div>
-          ${post.body}
+          <div class="body">
+            ${post.body}
+          </div>
         </div>
 
         ${post.attributes.related_content ? `

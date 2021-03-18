@@ -20,7 +20,7 @@ body {
   align-items: center;
 
   font-family: Avenir Next;
-  margin: 15px;
+  margin: 15px 25px;
   /* transition: .2s; */
 }
 
@@ -124,10 +124,14 @@ input:checked + .slider:before {
 .row {
   /* display: flex;
   justify-content: space-between; */
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+  border-radius: 24px;
+  padding: 20px 32px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 8%);
 }
 
-.row .title-section h2 {
+.row .title-section .title {
+  margin-top: 0;
   margin-bottom: 0.2rem;
 }
 
@@ -143,7 +147,7 @@ input:checked + .slider:before {
   align-items: baseline;
 }
 
-.title-section h2 {
+.title-section .title {
   margin-right: 1rem;
 }
 
@@ -154,6 +158,10 @@ input:checked + .slider:before {
 .title-section div {
   font-size: 0.7rem;
   font-weight: 700;
+}
+
+.content .body {
+  margin-top: 2.5rem
 }
 
 .content p, .content ol, .related-content  {
