@@ -10,16 +10,9 @@ function postTemplate(post) {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="../assets/index.css">
       <link rel="icon" href="../assets/turtle.png">
-      <script defer src="../assets/index.js"></script>
     </head>
-    <body>
+    <body class="light">
       <div class="main">
-        <div class="theme-switcher">
-          <label class="switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-          </label>
-        </div>
         <div class="header">
           <a class="selected" href="../">blog</a>
           <a href="../about">about</a>
