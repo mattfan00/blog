@@ -21,11 +21,8 @@ function postTemplate(post) {
         <div class="content">
           <div class="row">
             <div class="title-section">
-              <h3 class="title"><a href='./'>${post.attributes.title}</a></h3>
+              <h3 class="title">${post.attributes.title}</h3>
               <div>${post.attributes.date}</div>
-            </div>
-            <div class="description">
-              ${post.attributes.description}
             </div>
           </div>
           <div class="body">

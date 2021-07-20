@@ -21,13 +21,15 @@ function directoryTemplate(posts) {
         <div class="directory">
           ${posts.map(post => `
             <div class="row">
-              <div class="title-section">
-                <h3 class="title"><a href='./${post.path.slice(0, -3)}'>${post.attributes.title}</a></h3>
-                <div>${post.attributes.date}</div>
-              </div>
-              <div class="description">
-                ${post.attributes.description}
-              </div>
+              <a class="plain" href='./${post.path.slice(0, -3)}'>
+                <div class="title-section">
+                  <h3 class="title">${post.attributes.title}</h3>
+                  <div>${post.attributes.date}</div>
+                </div>
+                <div class="description">
+                  ${post.attributes.description}
+                </div>
+              </a>
             </div>
           `).join("")}
         </div>

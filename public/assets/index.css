@@ -53,6 +53,11 @@ a {
   background-color: var(--selected);
 }
 
+a.plain {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
 /* ==================== Links ================================ */
 
 /* ==================== Theme Switcher ================================ */
@@ -121,13 +126,13 @@ input:checked + .slider:before {
   /* line-height: 1.65; */
 }
 
-.row {
+.directory .row {
   /* display: flex;
   justify-content: space-between; */
-  margin-bottom: 1.25rem;
-  border-radius: 24px;
+  margin-bottom: 2.0rem;
+  /* border-radius: 24px;
   padding: 20px 32px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 8%);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 8%); */
 }
 
 .row .title-section .title {
@@ -149,19 +154,12 @@ input:checked + .slider:before {
 
 .title-section .title {
   margin-right: 1rem;
-}
-
-.title-section a {
-  text-decoration: none;
+  color: var(--link-color)
 }
 
 .title-section div {
   font-size: 0.7rem;
   font-weight: 700;
-}
-
-.content .body {
-  margin-top: 2.5rem
 }
 
 .content p, .content ol, .related-content  {
