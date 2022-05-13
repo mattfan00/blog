@@ -17,30 +17,16 @@
       </div>
 
       <div class="directory">
+        {{#each posts}}
         <div class="row">
-          <a class="plain" href="one-year">
+          <a class="plain" href="{{slicePath path}}">
             <div class="title-section">
-              <div class="title">one year</div>
-              <div>Dec 24, 2020</div>
+              <div class="title">{{attributes.title}}</div>
+              <div>{{attributes.date}}</div>
             </div>
           </a>
         </div>
-        <div class="row">
-          <a class="plain" href="imposter-syndrome">
-            <div class="title-section">
-              <div class="title">the imposter</div>
-              <div>Sep 29, 2020</div>
-            </div>
-          </a>
-        </div>
-        <div class="row">
-          <a class="plain" href="first-post">
-            <div class="title-section">
-              <div class="title">first post</div>
-              <div>Jul 27, 2020</div>
-            </div>
-          </a>
-        </div>
+        {{/each}}
 
         <!-- ${posts.map(post => `
           <div class="row">
