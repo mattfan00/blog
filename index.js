@@ -8,7 +8,7 @@ const aboutTemplate = require('./template/about');
 
 
 // create posts
-posts = fs.readdirSync('./posts')
+const posts = fs.readdirSync('./posts')
   .filter(postPath => postPath !== "about.md")
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
@@ -28,16 +28,16 @@ posts = fs.readdirSync('./posts')
 
     return post;
   });
-  
+
 // create home directory
-sortedPosts = posts.sort((a, b) => {
+const sortedPosts = posts.sort((a, b) => {
   return new Date(b.attributes.date) - new Date(a.attributes.date);
 })
 const directoryHTML = directoryTemplate(sortedPosts);
 fs.writeFileSync('./public/index.html', directoryHTML);
 
 // create about page
-aboutPosts = fs.readdirSync('./posts')
+const aboutPosts = fs.readdirSync('./posts')
   .filter(postPath => postPath === "about.md")
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8");
@@ -47,7 +47,7 @@ aboutPosts = fs.readdirSync('./posts')
     return content;
   })
 
-let aboutPost = aboutPosts[0]
+const aboutPost = aboutPosts[0]
 
 const aboutDir = `./public/about`;
 if (!fs.existsSync(aboutDir)) {

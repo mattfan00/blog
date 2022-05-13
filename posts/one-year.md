@@ -2,7 +2,7 @@
 
 title: "one year"
 date: "Dec 24, 2020"
-description: "celebrating my first year of heavy coding by sharing tips and resources i used along the way :D"
+# description: "celebrating my first year of heavy coding by sharing tips and resources i used along the way :D"
 related_content:
   - name: "The Web Developer Bootcamp"
     url: "https://www.udemy.com/course/the-web-developer-bootcamp/"

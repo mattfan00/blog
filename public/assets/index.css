@@ -1,7 +1,9 @@
 .light {
   --bg: white;
+  /* --bg: #f7f7f7; */
   --selected: #dddddd !important;
   --main-color: black;
+  /* --main-color: #777; */
   --link-color: #3c93e0;
 }
 
@@ -19,9 +21,8 @@ body {
   flex-direction: column;
   align-items: center;
 
-  font-family: Avenir Next;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 15px 25px;
-  /* transition: .2s; */
 }
 
 a {
@@ -60,66 +61,7 @@ a.plain {
 
 /* ==================== Links ================================ */
 
-/* ==================== Theme Switcher ================================ */
-.theme-switcher {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-}
-
-.switch {
-  display: inline-block;
-  height: 23px;
-  position: relative;
-  width: 40px;
-}
-
-.switch input {
-  display:none;
-}
-
-.slider {
-  background-color: #ccc;
-  bottom: 0;
-  cursor: pointer;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  /* transition: .4s; */
-}
-
-.slider:before {
-  background-color: #fff;
-  bottom: 4px;
-  content: "";
-  height: 15px;
-  left: 4px;
-  position: absolute;
-  /* transition: .4s; */
-  width: 15px;
-}
-
-input:checked + .slider {
-  /* background-color: #66bb6a; */
-  background-color: #333c65;
-}
-
-input:checked + .slider:before {
-  transform: translateX(17px);
-}
-
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-
 /* ==================== Directory ================================ */
-
 
 .directory {
   /* font-size: 0.85rem; */
@@ -127,12 +69,7 @@ input:checked + .slider:before {
 }
 
 .directory .row {
-  /* display: flex;
-  justify-content: space-between; */
-  margin-bottom: 2.0rem;
-  /* border-radius: 24px;
-  padding: 20px 32px;
-  box-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 1px 4px rgb(0 0 0 / 8%); */
+  margin-bottom: 1rem;
 }
 
 .row .title-section .title {
@@ -154,16 +91,17 @@ input:checked + .slider:before {
 
 .title-section .title {
   margin-right: 1rem;
-  color: var(--link-color)
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .title-section div {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  /* font-weight: 700; */
 }
 
 .content p, .content ol, .related-content  {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   line-height: 1.65;
 }
 
