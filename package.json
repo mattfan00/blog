@@ -4,15 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "build": "node index.js"
+    "start": "nodemon index.ts",
+    "build": "ts-node index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/markdown-it": "^12.2.3",
     "front-matter": "^4.0.2",
     "handlebars": "^4.7.7",
     "markdown-it": "^11.0.0",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

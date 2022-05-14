@@ -1,7 +1,9 @@
-const fs = require("fs")
-const fm = require("front-matter")
-const md = require("markdown-it")("commonmark")
-const Handlebars = require("handlebars")
+import fs from "fs"
+import fm from "front-matter"
+import MarkdownIt from "markdown-it"
+import Handlebars from "handlebars"
+
+const md = new MarkdownIt("commonmark")
 
 const postTemplate = Handlebars.compile(fs.readFileSync("./template/post.html", "utf8"))
 const directoryTemplate = Handlebars.compile(fs.readFileSync("./template/directory.html", "utf8"))
@@ -11,15 +13,23 @@ Handlebars.registerHelper('slicePath', function (str) {
   return str.slice(0, -3)
 })
 
+interface ContentAttributes {
+  title: string
+  date: string
+}
+
 // create posts
 const posts = fs.readdirSync("./posts")
   .filter(postPath => postPath !== "about.md")
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8")
-    const content = fm(rawText)
-    content.body = md.render(content.body)
-    content.path = postPath
-    return content
+    const content = fm<ContentAttributes>(rawText)
+
+    return {
+      ...content,
+      body: md.render(content.body),
+      path: postPath
+    }
   })
   .map(post => {
     const postDir = `./public/${post.path.slice(0, -3)}`
@@ -35,7 +45,7 @@ const posts = fs.readdirSync("./posts")
 
 // create home directory
 const sortedPosts = posts.sort((a, b) => {
-  return new Date(b.attributes.date) - new Date(a.attributes.date)
+  return new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime()
 })
 const directoryHTML = directoryTemplate({posts: sortedPosts})
 fs.writeFileSync("./public/index.html", directoryHTML)
@@ -45,10 +55,13 @@ const aboutPosts = fs.readdirSync("./posts")
   .filter(postPath => postPath === "about.md")
   .map(postPath => {
     const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8")
-    const content = fm(rawText)
-    content.body = md.render(content.body)
-    content.path = postPath
-    return content
+    const content = fm<ContentAttributes>(rawText)
+
+    return {
+      ...content,
+      body: md.render(content.body),
+      path: postPath
+    }
   })
 
 const aboutPost = aboutPosts[0]
