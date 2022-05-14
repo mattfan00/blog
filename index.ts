@@ -1,4 +1,5 @@
 import fs from "fs"
+import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
 import Handlebars from "handlebars"
@@ -17,6 +18,24 @@ interface ContentAttributes {
   title: string
   date: string
 }
+
+// create public folder
+fs.rmdirSync("./public", { recursive: true })
+fs.mkdirSync("./public")
+
+// create assets folder
+function copyFolderSync(from: string, to: string) {
+  fs.mkdirSync(to)
+  fs.readdirSync(from).forEach(element => {
+      if (fs.lstatSync(path.join(from, element)).isFile()) {
+          fs.copyFileSync(path.join(from, element), path.join(to, element))
+      } else {
+          copyFolderSync(path.join(from, element), path.join(to, element))
+      }
+  })
+}
+
+copyFolderSync("./assets", "./public/assets")
 
 // create posts
 const posts = fs.readdirSync("./posts")
