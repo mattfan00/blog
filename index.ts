@@ -3,6 +3,7 @@ import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
 import Handlebars from "handlebars"
+import * as constants from "./constants"
 
 const md = new MarkdownIt("commonmark")
 
@@ -20,8 +21,9 @@ interface ContentAttributes {
 }
 
 // create public folder
-fs.rmdirSync("./public", { recursive: true })
-fs.mkdirSync("./public")
+if (fs.existsSync(constants.PATH_PUBLIC))
+  fs.rmSync(constants.PATH_PUBLIC, { recursive: true })
+fs.mkdirSync(constants.PATH_PUBLIC)
 
 // create assets folder
 function copyFolderSync(from: string, to: string) {
@@ -35,13 +37,13 @@ function copyFolderSync(from: string, to: string) {
   })
 }
 
-copyFolderSync("./assets", "./public/assets")
+copyFolderSync(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
 
 // create posts
-const posts = fs.readdirSync("./posts")
+const posts = fs.readdirSync(constants.PATH_CONTENT)
   .filter(postPath => postPath !== "about.md")
   .map(postPath => {
-    const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8")
+    const rawText = fs.readFileSync(`${constants.PATH_CONTENT}/${postPath}`, "utf8")
     const content = fm<ContentAttributes>(rawText)
 
     return {
@@ -51,7 +53,7 @@ const posts = fs.readdirSync("./posts")
     }
   })
   .map(post => {
-    const postDir = `./public/${post.path.slice(0, -3)}`
+    const postDir = `${constants.PATH_PUBLIC}/${post.path.slice(0, -3)}`
     if (!fs.existsSync(postDir)) {
       console.log(post.attributes.title + " doesnt exist")
       fs.mkdirSync(postDir)
@@ -67,13 +69,13 @@ const sortedPosts = posts.sort((a, b) => {
   return new Date(b.attributes.date).getTime() - new Date(a.attributes.date).getTime()
 })
 const directoryHTML = directoryTemplate({posts: sortedPosts})
-fs.writeFileSync("./public/index.html", directoryHTML)
+fs.writeFileSync(`${constants.PATH_PUBLIC}/index.html`, directoryHTML)
 
 // create about page
-const aboutPosts = fs.readdirSync("./posts")
+const aboutPosts = fs.readdirSync(constants.PATH_CONTENT)
   .filter(postPath => postPath === "about.md")
   .map(postPath => {
-    const rawText = fs.readFileSync(`./posts/${postPath}`, "utf8")
+    const rawText = fs.readFileSync(`${constants.PATH_CONTENT}/${postPath}`, "utf8")
     const content = fm<ContentAttributes>(rawText)
 
     return {
@@ -85,10 +87,10 @@ const aboutPosts = fs.readdirSync("./posts")
 
 const aboutPost = aboutPosts[0]
 
-const aboutDir = "./public/about";
+const aboutDir = `${constants.PATH_PUBLIC}/about`;
 if (!fs.existsSync(aboutDir)) {
   fs.mkdirSync(aboutDir)
 }
 
 const aboutHTML = aboutTemplate(aboutPost)
-fs.writeFileSync("./public/about/index.html", aboutHTML)
+fs.writeFileSync(`${constants.PATH_PUBLIC}/about/index.html`, aboutHTML)
