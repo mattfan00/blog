@@ -2,7 +2,7 @@
 
 title: "first post"
 date: "Jul 27, 2020"
-# description: "why i started a blog and some thoughts about technologies."
+layout: post
 related_content:
   - name: "Pine Wu's blog"
     url: "https://blog.matsu.io/"

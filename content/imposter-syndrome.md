@@ -2,7 +2,7 @@
 
 title: "the imposter"
 date: "Sep 29, 2020"
-# description: "how you can benefit from the imposter syndrome."
+layout: post
 related_content:
   - name: "Programmer Imposter Syndrome"
     url: "https://www.codingdojo.com/blog/programmer-imposter-syndrome"
