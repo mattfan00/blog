@@ -1,10 +1,10 @@
 {
-  "name": "ssg",
+  "name": "blog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "nodemon index.ts",
+    "start": "concurrently \"http-server -s -p 3000 ./public\" \"nodemon index.ts\"",
     "build": "ts-node index.ts"
   },
   "author": "",
@@ -17,7 +17,13 @@
     "nodemon": "^2.0.7"
   },
   "devDependencies": {
+    "concurrently": "^7.2.0",
+    "http-server": "^14.1.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
+  },
+  "nodemonConfig": {
+    "ignore": "./public",
+    "ext": "ts,json,html,md"
   }
 }
