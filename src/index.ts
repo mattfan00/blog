@@ -63,13 +63,25 @@ const convertContentToPublic = (from: string, to: string) => {
 }
 
 const start = () => {
-  // create public folder
-  file.createFolder(constants.PATH_PUBLIC)
+  // read assets
+  const assetPaths = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
+  console.log(assetPaths)
+
+  // read content
+  const contentPaths = file.within(constants.PATH_CONTENT, () => file.readFolderRecursive("."))
+  console.log(contentPaths)
+
+  // read templates
+  const templatePaths = file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
+  console.log(templatePaths)
+
+  // // create public folder
+  // file.createFolder(constants.PATH_PUBLIC)
 
   // // create assets folder in public
-  file.copyFolder(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
+  // file.copyFolder(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
 
-  convertContentToPublic(constants.PATH_CONTENT, constants.PATH_PUBLIC)
+  // convertContentToPublic(constants.PATH_CONTENT, constants.PATH_PUBLIC)
 }
 
 start()

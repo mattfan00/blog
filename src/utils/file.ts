@@ -39,3 +39,13 @@ export const readFolderRecursive = (folder: string, files?: string[]): string[] 
 
   return files
 }
+
+export const within = (path: string, callback: () => any) => {
+  const currentPath = process.cwd()
+
+  process.chdir(path)
+  const returnValue = callback()
+  process.chdir(currentPath)
+
+  return returnValue
+}
