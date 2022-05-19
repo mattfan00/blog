@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "concurrently \"http-server -s -p 3000 ./public\" \"nodemon index.ts\"",
-    "build": "ts-node index.ts"
+    "start": "concurrently \"http-server -s -p 3000 ./public\" \"nodemon src/index.ts\"",
+    "build": "ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
