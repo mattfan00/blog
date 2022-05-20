@@ -1,5 +1,5 @@
 export const PATH_ROOT = "."
-export const PATH_CONTENT = `${PATH_ROOT}/content`
+export const PATH_PAGES = `${PATH_ROOT}/pages`
 export const PATH_ASSETS = `${PATH_ROOT}/assets`
 export const PATH_TEMPLATES = `${PATH_ROOT}/templates`
 export const PATH_PUBLIC = `${PATH_ROOT}/public`

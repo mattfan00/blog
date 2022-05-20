@@ -1,10 +1,10 @@
 import fs from "fs"
-import * as file from "./utils/file"
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
 import Handlebars from "handlebars"
-import * as constants from "./constants"
+import * as file from "./utils/file"
+import * as constants from "./utils/constants"
 
 const md = new MarkdownIt("commonmark")
 
@@ -12,23 +12,33 @@ Handlebars.registerHelper('slicePath', function (str) {
   return str.slice(0, -3)
 })
 
-type TemplateMap = Map<string, HandlebarsTemplateDelegate>
 
 interface ContentAttributes {
   title: string
   date?: string
   layout: string
 }
-  // create templates
-  const templates: TemplateMap = new Map()
-  fs.readdirSync(constants.PATH_TEMPLATES).forEach(element => {
-    const templatePath = path.join(constants.PATH_TEMPLATES, element)
-    if (fs.lstatSync(templatePath).isFile() && path.extname(element) === ".html") {
-        const elementName = path.parse(element).name
-        templates.set(elementName, Handlebars.compile(file.readFile(templatePath)))
-    }
-  })
 
+interface Site {
+  assets: Asset[],
+  pages: Page[]
+}
+
+interface Asset {
+  path: string
+  base: string
+  name: string
+  ext: string
+}
+
+interface Page {
+  path: string
+  md: string
+}
+
+const templates: Map<string, HandlebarsTemplateDelegate> = new Map()
+const assets: Asset[] = []
+const pages: Page[] = []
 
 // convert the markdown files in content to public
 const convertContentToPublic = (from: string, to: string) => {
@@ -62,26 +72,42 @@ const convertContentToPublic = (from: string, to: string) => {
   })
 }
 
-const start = () => {
-  // read assets
-  const assetPaths = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
-  console.log(assetPaths)
+// read assets
+const assetPaths = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
+assetPaths.forEach(p => {
+  assets.push({
+    path: path.join(constants.PATH_ASSETS, p),
+    name: p,
+    base: path.basename(p),
+    ext: path.extname(p)
+  })
+})
 
-  // read content
-  const contentPaths = file.within(constants.PATH_CONTENT, () => file.readFolderRecursive("."))
-  console.log(contentPaths)
+// read templates
+const templatePaths = file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
+  .filter(p => path.extname(p) === ".html")
 
-  // read templates
-  const templatePaths = file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
-  console.log(templatePaths)
+templatePaths.forEach(p => {
+  const templateName = path.parse(p).name
+  templates.set(templateName, Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p))))
+})
 
-  // // create public folder
-  // file.createFolder(constants.PATH_PUBLIC)
+// read pages
+const pagePaths = file.within(constants.PATH_PAGES, () => file.readFolderRecursive("."))
+pagePaths.forEach(p => {
+  const pagePath = path.join(constants.PATH_PAGES, p)
+  pages.push({
+    path: pagePath,
+    md: file.readFile(pagePath)
+  })
+})
 
-  // // create assets folder in public
-  // file.copyFolder(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
 
-  // convertContentToPublic(constants.PATH_CONTENT, constants.PATH_PUBLIC)
-}
 
-start()
+// // create public folder
+// file.createFolder(constants.PATH_PUBLIC)
+
+// // create assets folder in public
+// file.copyFolder(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
+
+// convertContentToPublic(constants.PATH_CONTENT, constants.PATH_PUBLIC)
