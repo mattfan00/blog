@@ -4,7 +4,7 @@ import fm from "front-matter"
 import MarkdownIt from "markdown-it"
 import Handlebars from "handlebars"
 import * as file from "./utils/file"
-import * as constants from "./utils/constants"
+import * as site from "./site"
 
 const md = new MarkdownIt("commonmark")
 
@@ -12,33 +12,13 @@ Handlebars.registerHelper('slicePath', function (str) {
   return str.slice(0, -3)
 })
 
-
 interface ContentAttributes {
   title: string
   date?: string
   layout: string
 }
 
-interface Site {
-  assets: Asset[],
-  pages: Page[]
-}
-
-interface Asset {
-  path: string
-  base: string
-  name: string
-  ext: string
-}
-
-interface Page {
-  path: string
-  md: string
-}
-
 const templates: Map<string, HandlebarsTemplateDelegate> = new Map()
-const assets: Asset[] = []
-const pages: Page[] = []
 
 // convert the markdown files in content to public
 const convertContentToPublic = (from: string, to: string) => {
@@ -72,36 +52,12 @@ const convertContentToPublic = (from: string, to: string) => {
   })
 }
 
-// read assets
-const assetPaths = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
-assetPaths.forEach(p => {
-  assets.push({
-    path: path.join(constants.PATH_ASSETS, p),
-    name: p,
-    base: path.basename(p),
-    ext: path.extname(p)
-  })
-})
 
-// read templates
-const templatePaths = file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
-  .filter(p => path.extname(p) === ".html")
+const start = () => {
+  const siteInfo = site.read()
+}
 
-templatePaths.forEach(p => {
-  const templateName = path.parse(p).name
-  templates.set(templateName, Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p))))
-})
-
-// read pages
-const pagePaths = file.within(constants.PATH_PAGES, () => file.readFolderRecursive("."))
-pagePaths.forEach(p => {
-  const pagePath = path.join(constants.PATH_PAGES, p)
-  pages.push({
-    path: pagePath,
-    md: file.readFile(pagePath)
-  })
-})
-
+start()
 
 
 // // create public folder
