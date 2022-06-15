@@ -55,6 +55,7 @@ const convertContentToPublic = (from: string, to: string) => {
 
 const start = () => {
   const siteInfo = site.read()
+  const { site: newSite, templates } = site.process(siteInfo)
 }
 
 start()
