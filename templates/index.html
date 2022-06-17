@@ -17,12 +17,12 @@
       </div>
 
       <div class="directory">
-        {{#each posts}}
+        {{#each site.pages}}
         <div class="row">
-          <a class="plain" href="{{slicePath path}}">
+          <a class="plain" href="{{url}}">
             <div class="title-section">
-              <div class="title">{{attributes.title}}</div>
-              <div>{{attributes.date}}</div>
+              <div class="title">{{title}}</div>
+              <div>{{date}}</div>
             </div>
           </a>
         </div>

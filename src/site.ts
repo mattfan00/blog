@@ -111,6 +111,14 @@ export const generate = (site: Site) => {
         content: md.render(page.excerpt),
         attributes: page.attributes
       },
+      site: {
+        assets: site.assets,
+        pages: site.pages.map(page => ({
+          title: page.title,
+          layout: page.layout,
+          date: page.date,
+        }))
+      }
     })
 
     fs.writeFileSync(path.join(destDir, "index.html"), generatedHTML)
