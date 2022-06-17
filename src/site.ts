@@ -49,10 +49,18 @@ export const read = (): Site => {
       const parsedPath = path.parse(p)
       const parsedContent = fm<PagePredefinedAttributes>(rawContent)
 
-      const { title, date, ...restAttributes } = parsedContent.attributes
+      const {
+        title,
+        layout,
+        date,
+        ...restAttributes
+      } = parsedContent.attributes
 
-      if (!title)
-        throw new Error(`Required attribute missing from ${fullPath}`)
+      if (!title || !layout)
+        throw new Error(`Required attribute missing from '${fullPath}'`)
+
+      if (!templates.get(layout))
+        throw new Error(`Template '${layout}' in '${fullPath}' does not exist`)
 
       return {
         path: fullPath,
@@ -64,6 +72,7 @@ export const read = (): Site => {
         rawContent: rawContent,
         excerpt: parsedContent.body,
         title: title,
+        layout: layout,
         date: date,
         attributes: restAttributes
       }
@@ -84,6 +93,27 @@ export const generate = (site: Site) => {
     const destDir = path.join(constants.PATH_PUBLIC_ASSETS, path.parse(asset.pathRelative).dir)
     fs.mkdirSync(destDir, { recursive: true })
     fs.copyFileSync(asset.path, path.join(destDir, asset.base))
+  })
+
+  site.pages.forEach(page => {
+    let destDir = path.join(constants.PATH_PUBLIC, path.parse(page.pathRelative).dir)
+    if (page.name !== "index")
+      destDir = path.join(destDir, page.name)
+    fs.mkdirSync(destDir, { recursive: true })
+
+    // template has to exist since we validate it when reading the page file
+    const template = site.templates.get(page.layout)!
+    const generatedHTML = template({
+      page: {
+        title: page.title,
+        layout: page.layout,
+        date: page.date,
+        content: md.render(page.excerpt),
+        attributes: page.attributes
+      },
+    })
+
+    fs.writeFileSync(path.join(destDir, "index.html"), generatedHTML)
   })
 }
 

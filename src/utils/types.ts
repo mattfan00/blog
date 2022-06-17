@@ -33,7 +33,8 @@ interface Base {
 export interface Asset extends Base {}
 
 export interface PagePredefinedAttributes{
-  title: string,
+  title: string
+  layout: string
   date: string
 }
 

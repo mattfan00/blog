@@ -2,7 +2,6 @@ import fs from "fs"
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
-import Handlebars from "handlebars"
 import * as file from "./utils/file"
 import * as site from "./site"
 
@@ -55,12 +54,3 @@ const start = () => {
 }
 
 start()
-
-
-// // create public folder
-// file.createFolder(constants.PATH_PUBLIC)
-
-// // create assets folder in public
-// file.copyFolder(constants.PATH_ASSETS, constants.PATH_PUBLIC_ASSETS)
-
-// convertContentToPublic(constants.PATH_CONTENT, constants.PATH_PUBLIC)
