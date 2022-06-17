@@ -8,10 +8,6 @@ import * as site from "./site"
 
 const md = new MarkdownIt("commonmark")
 
-Handlebars.registerHelper('slicePath', function (str) {
-  return str.slice(0, -3)
-})
-
 interface ContentAttributes {
   title: string
   date?: string
@@ -54,8 +50,8 @@ const convertContentToPublic = (from: string, to: string) => {
 
 
 const start = () => {
-  const siteInfo = site.read()
-  const { site: newSite, templates } = site.process(siteInfo)
+  const newSite = site.read()
+  site.generate(newSite)
 }
 
 start()

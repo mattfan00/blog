@@ -1,52 +1,67 @@
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
-import Handlebars, { Template } from "handlebars"
+import Handlebars, { parse } from "handlebars"
 import * as file from "./utils/file"
 import * as constants from "./utils/constants"
 import {
-  SiteInfo,
-  Info,
   Site,
   Asset,
   Page,
-  TemplateMap
+  TemplateMap,
+  PagePredefinedAttributes
 } from "./utils/types"
 
 const md = new MarkdownIt("commonmark")
 
-export const read = (): SiteInfo => {
-  const assets: Info[]  = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
+export const read = (): Site => {
+  const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
     .map(p => {
+      const parsedPath = path.parse(p)
       return {
         dir: constants.PATH_ASSETS,
-        path: p,
+        pathRelative: p,
+        name: parsedPath.name,
+        base: parsedPath.base,
+        ext: parsedPath.ext
       }
     })
 
-  const templates: Info[] = file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
+  const templates: TemplateMap = new Map();
+  file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
     .filter(p => path.extname(p) === ".html")
-    .map(p => {
-      const dir = constants.PATH_TEMPLATES
-      return {
-        dir: dir,
-        path: p,
-        rawContent: file.readFile(path.join(dir, p))
-      }
+    .forEach(p => {
+      const templateName = path.parse(p).name
+      templates.set(
+        templateName,
+        Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p)))
+      )
     })
 
-  // templatePaths.forEach(p => {
-  //   const templateName = path.parse(p).name
-  //   templates.set(templateName, Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p))))
-  // })
-
-  const pages: Info[] = file.within(constants.PATH_PAGES, () => file.readFolderRecursive("."))
+  const pages: Page[] = file.within(constants.PATH_PAGES, () => file.readFolderRecursive("."))
     .map(p => {
       const dir = constants.PATH_PAGES
+      const fullPath = path.join(dir, p)
+      const rawContent = file.readFile(fullPath)
+      const parsedPath = path.parse(p)
+      const parsedContent = fm<PageRequiredAttributes>(rawContent)
+
+      const { title, date, ...restAttributes } = parsedContent.attributes
+
+      if (!title || !date)
+        throw new Error(`Required attribute missing from ${fullPath}`)
+
       return {
         dir: dir,
-        path: p,
-        rawContent: file.readFile(path.join(dir, p))
+        pathRelative: p,
+        name: parsedPath.name,
+        base: parsedPath.base,
+        ext: parsedPath.ext,
+        rawContent: rawContent,
+        excerpt: parsedContent.body,
+        title: title,
+        date: date,
+        attributes: restAttributes
       }
     })
 
@@ -57,50 +72,8 @@ export const read = (): SiteInfo => {
   }
 }
 
-export const process = (siteInfo: SiteInfo) => {
-  const assets: Asset[]= siteInfo.assets.map(asset => {
-    const parsedPath = path.parse(asset.path)
-    return {
-      path: path.join("/", constants.ASSETS, asset.path),
-      name: parsedPath.name,
-      base: parsedPath.base,
-      ext: parsedPath.ext
-    }
-  })
-
-  const pages = siteInfo.pages.map(page => {
-    const parsedPath = path.parse(page.path)
-    const parsedContent = fm<any>(page.rawContent!)
-
-    const newPage: Page = {
-      path: path.join("/", constants.PAGES, page.path),
-      name: parsedPath.name,
-      base: parsedPath.base,
-      excerpt: parsedContent.body,
-      ...parsedContent.attributes
-    }
-
-    return newPage
-  })
-
-  const site: Site = {
-    assets,
-    pages
-  }
-
-  const templates: TemplateMap = new Map();
-  siteInfo.templates.forEach(template => {
-    const templateName = path.parse(template.path).name
-    templates.set(templateName, Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, template.path))))
-  })
-
-  return {
-    site,
-    templates
-  }
-}
-
-export const generate = (site: Site, templates: TemplateMap) => {
-
+export const generate = (site: Site) => {
+  file.createFolder(constants.PATH_PUBLIC)
+  file.createFolder(constants.PATH_PUBLIC_ASSETS)
 }
 

@@ -15,21 +15,31 @@ export interface Info {
 export interface Site {
   assets: Asset[]
   pages: Page[]
+  templates: TemplateMap
 }
 
-export interface Asset {
-  path: string
+interface Base {
+  // base directory
+  dir: string
+  // path of file relative to the base directory
+  pathRelative: string
+  rawContent?: string
   name: string
   base: string
   ext: string
 }
 
-export interface Page {
-  path: string
-  name: string
-  base: string
-  excerpt: string
-  [propName: string]: any
+export interface Asset extends Base {}
+
+export interface PagePredefinedAttributes{
+  title: string,
+  date: string
 }
+
+export interface Page extends Base, PagePredefinedAttributes {
+  excerpt: string
+  attributes: object
+}
+
 
 export type TemplateMap = Map<string, HandlebarsTemplateDelegate>
