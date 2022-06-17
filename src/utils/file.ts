@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 
-export const createFolder = (path: string) => {
+export const createFolder = (path: string, recursive?: boolean) => {
   if (fs.existsSync(path))
     fs.rmSync(path, { recursive: true })
   fs.mkdirSync(path)

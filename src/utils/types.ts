@@ -19,6 +19,7 @@ export interface Site {
 }
 
 interface Base {
+  path: string
   // base directory
   dir: string
   // path of file relative to the base directory

@@ -1,8 +1,9 @@
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
-import Handlebars, { parse } from "handlebars"
+import Handlebars, { create, parse } from "handlebars"
 import * as file from "./utils/file"
+import fs from "fs"
 import * as constants from "./utils/constants"
 import {
   Site,
@@ -17,9 +18,11 @@ const md = new MarkdownIt("commonmark")
 export const read = (): Site => {
   const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
     .map(p => {
+      const dir = constants.PATH_ASSETS
       const parsedPath = path.parse(p)
       return {
-        dir: constants.PATH_ASSETS,
+        path: path.join(dir, p),
+        dir: dir,
         pathRelative: p,
         name: parsedPath.name,
         base: parsedPath.base,
@@ -44,14 +47,15 @@ export const read = (): Site => {
       const fullPath = path.join(dir, p)
       const rawContent = file.readFile(fullPath)
       const parsedPath = path.parse(p)
-      const parsedContent = fm<PageRequiredAttributes>(rawContent)
+      const parsedContent = fm<PagePredefinedAttributes>(rawContent)
 
       const { title, date, ...restAttributes } = parsedContent.attributes
 
-      if (!title || !date)
+      if (!title)
         throw new Error(`Required attribute missing from ${fullPath}`)
 
       return {
+        path: fullPath,
         dir: dir,
         pathRelative: p,
         name: parsedPath.name,
@@ -75,5 +79,11 @@ export const read = (): Site => {
 export const generate = (site: Site) => {
   file.createFolder(constants.PATH_PUBLIC)
   file.createFolder(constants.PATH_PUBLIC_ASSETS)
+
+  site.assets.forEach(asset => {
+    const destDir = path.join(constants.PATH_PUBLIC_ASSETS, path.parse(asset.pathRelative).dir)
+    fs.mkdirSync(destDir, { recursive: true })
+    fs.copyFileSync(asset.path, path.join(destDir, asset.base))
+  })
 }
 
