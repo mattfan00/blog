@@ -36,6 +36,7 @@ export interface PagePredefinedAttributes{
   title: string
   layout: string
   date: string
+  categories: string[]
 }
 
 export interface Page extends Base, PagePredefinedAttributes {

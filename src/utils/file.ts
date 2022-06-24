@@ -1,7 +1,7 @@
 import fs from "fs"
 import path from "path"
 
-export const createFolder = (path: string, recursive?: boolean) => {
+export const createDir = (path: string, recursive?: boolean) => {
   if (fs.existsSync(path))
     fs.rmSync(path, { recursive: true })
   fs.mkdirSync(path)
@@ -15,7 +15,7 @@ export const readFile = (path: string, encoding?: BufferEncoding) => {
   return fs.readFileSync(path, encoding ? encoding : "utf8")
 }
 
-export const readFolderRecursive = (folder: string, files?: string[]): string[] => {
+export const readDirRecursive = (folder: string, files?: string[]): string[] => {
   files = files || []
 
   fs.readdirSync(folder).forEach(element => {
@@ -23,7 +23,7 @@ export const readFolderRecursive = (folder: string, files?: string[]): string[] 
     if (isFile(elementPath))
       files!.push(elementPath)
     else
-      readFolderRecursive(elementPath, files)
+      readDirRecursive(elementPath, files)
   })
 
   return files
@@ -37,4 +37,12 @@ export const within = <T>(path: string, callback: () => T) => {
   process.chdir(currentPath)
 
   return returnValue
+}
+
+
+export const listDirs = (p: string) => {
+  const directory = path.dirname(p)
+  return directory
+    .split("/")
+    .filter(s => s !== "." && s !== "")
 }

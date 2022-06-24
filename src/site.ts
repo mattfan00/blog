@@ -1,7 +1,7 @@
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
-import Handlebars, { create, parse } from "handlebars"
+import Handlebars from "handlebars"
 import * as file from "./utils/file"
 import fs from "fs"
 import * as constants from "./utils/constants"
@@ -16,7 +16,7 @@ import {
 const md = new MarkdownIt("commonmark")
 
 export const read = (): Site => {
-  const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readFolderRecursive("."))
+  const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readDirRecursive("."))
     .map(p => {
       const dir = constants.PATH_ASSETS
       const parsedPath = path.parse(p)
@@ -31,7 +31,7 @@ export const read = (): Site => {
     })
 
   const templates: TemplateMap = new Map();
-  file.within(constants.PATH_TEMPLATES, () => file.readFolderRecursive("."))
+  file.within(constants.PATH_TEMPLATES, () => file.readDirRecursive("."))
     .filter(p => path.extname(p) === ".html")
     .forEach(p => {
       const templateName = path.parse(p).name
@@ -41,7 +41,7 @@ export const read = (): Site => {
       )
     })
 
-  const pages: Page[] = file.within(constants.PATH_PAGES, () => file.readFolderRecursive("."))
+  const pages: Page[] = file.within(constants.PATH_PAGES, () => file.readDirRecursive("."))
     .map(p => {
       const dir = constants.PATH_PAGES
       const fullPath = path.join(dir, p)
@@ -53,6 +53,7 @@ export const read = (): Site => {
         title,
         layout,
         date,
+        categories,
         ...restAttributes
       } = parsedContent.attributes
 
@@ -74,6 +75,7 @@ export const read = (): Site => {
         title: title,
         layout: layout,
         date: date,
+        categories: categories ? categories : file.listDirs(p),
         attributes: restAttributes
       }
     })
@@ -86,8 +88,8 @@ export const read = (): Site => {
 }
 
 export const generate = (site: Site) => {
-  file.createFolder(constants.PATH_PUBLIC)
-  file.createFolder(constants.PATH_PUBLIC_ASSETS)
+  file.createDir(constants.PATH_PUBLIC)
+  file.createDir(constants.PATH_PUBLIC_ASSETS)
 
   site.assets.forEach(asset => {
     const destDir = path.join(constants.PATH_PUBLIC_ASSETS, path.parse(asset.pathRelative).dir)
@@ -108,6 +110,7 @@ export const generate = (site: Site) => {
         title: page.title,
         layout: page.layout,
         date: page.date,
+        categories: page.categories,
         content: md.render(page.excerpt),
         attributes: page.attributes
       },
@@ -117,6 +120,7 @@ export const generate = (site: Site) => {
           title: page.title,
           layout: page.layout,
           date: page.date,
+          categories: page.categories
         }))
       }
     })
