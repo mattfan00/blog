@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "concurrently \"http-server -s -p 3000 ./public\" \"nodemon src/index.ts\"",
-    "build": "ts-node src/index.ts"
+    "build": "tsc --outDir build && node build/index.js"
   },
   "author": "",
   "license": "ISC",
