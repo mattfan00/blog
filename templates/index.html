@@ -11,22 +11,15 @@
   </head>
   <body class="light">
     <div class="main">
-      <div class="header">
-        <a class="selected" href="/">blog</a>
-        <a href="/about">about</a>
-      </div>
+      <h3>Matthew Fan</h3>
 
       <div class="directory">
-        {% for page in site.pages %}
+        {% for page in site.pages | sort(false, true, "date") %}
         {% if "posts" in page.categories %}
-        <div class="row">
-          <a class="plain" href="{{ page.url }}">
-            <div class="title-section">
-              <div class="title">{{ page.title }}</div>
-              <div>{{ page.date }}</div>
-            </div>
-          </a>
-        </div>
+        <a class="row plain" href="{{ page.url }}">
+          <div class="title">{{ page.title }}</div>
+          <div>{{ page.date }}</div>
+        </a>
         {% endif %}
         {% endfor %}
       </div>

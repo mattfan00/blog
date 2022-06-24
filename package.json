@@ -25,6 +25,6 @@
   },
   "nodemonConfig": {
     "ignore": "./public",
-    "ext": "ts,json,html,md"
+    "ext": "ts,json,html,md,css"
   }
 }

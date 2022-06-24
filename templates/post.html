@@ -11,19 +11,14 @@
   </head>
   <body class="light">
     <div class="main">
-      <div class="header">
-        <a class="selected" href="/">blog</a>
-        <a href="/about">about</a>
-      </div>
-
       <div class="content">
         <div class="row">
           <div class="title-section">
-            <h3 class="title">{{ page.title }}</h3>
-            <div>{{ page.date }}</div>
+            <h2 class="title">{{ page.title }}</h2>
+            <div class="date">{{ page.date }}</div>
           </div>
         </div>
-        <div class="body">
+        <div class="content">
           {{ page.content }}
         </div>
       </div>
