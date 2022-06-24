@@ -74,6 +74,7 @@ export const read = (): Site => {
         ext: parsedPath.ext,
         rawContent: rawContent,
         excerpt: parsedContent.body,
+        url: path.join("/", parsedPath.dir,parsedPath.name),
         title: title,
         layout: layout,
         date: date,
@@ -114,6 +115,7 @@ export const generate = (site: Site) => {
         date: page.date,
         categories: page.categories,
         content: md.render(page.excerpt),
+        url: page.url,
         attributes: page.attributes
       },
       site: {
@@ -122,7 +124,8 @@ export const generate = (site: Site) => {
           title: page.title,
           layout: page.layout,
           date: page.date,
-          categories: page.categories
+          categories: page.categories,
+          url: page.url
         }))
       }
     })

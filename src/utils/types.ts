@@ -43,6 +43,7 @@ export interface PagePredefinedAttributes{
 
 export interface Page extends Base, PagePredefinedAttributes {
   excerpt: string
+  url: string
   attributes: object
 }
 
