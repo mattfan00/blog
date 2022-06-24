@@ -1,7 +1,7 @@
 import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
-import Handlebars from "handlebars"
+import nunjucks from "nunjucks"
 import * as file from "./utils/file"
 import fs from "fs"
 import * as constants from "./utils/constants"
@@ -14,6 +14,8 @@ import {
 } from "./utils/types"
 
 const md = new MarkdownIt("commonmark")
+
+const nunjucksEnv = nunjucks.configure({ autoescape: false })
 
 export const read = (): Site => {
   const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readDirRecursive("."))
@@ -37,7 +39,7 @@ export const read = (): Site => {
       const templateName = path.parse(p).name
       templates.set(
         templateName,
-        Handlebars.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p)))
+        nunjucks.compile(file.readFile(path.join(constants.PATH_TEMPLATES, p)), nunjucksEnv)
       )
     })
 
@@ -105,7 +107,7 @@ export const generate = (site: Site) => {
 
     // template has to exist since we validate it when reading the page file
     const template = site.templates.get(page.layout)!
-    const generatedHTML = template({
+    const generatedHTML = template.render({
       page: {
         title: page.title,
         layout: page.layout,

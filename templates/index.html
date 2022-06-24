@@ -17,16 +17,18 @@
       </div>
 
       <div class="directory">
-        {{#each site.pages}}
+        {% for page in site.pages %}
+        {% if "posts" in page.categories %}
         <div class="row">
-          <a class="plain" href="{{url}}">
+          <a class="plain" href="{{ page.url }}">
             <div class="title-section">
-              <div class="title">{{title}}</div>
-              <div>{{date}}</div>
+              <div class="title">{{ page.title }}</div>
+              <div>{{ page.date }}</div>
             </div>
           </a>
         </div>
-        {{/each}}
+        {% endif %}
+        {% endfor %}
       </div>
     </div>
   </body>

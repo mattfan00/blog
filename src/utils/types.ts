@@ -1,3 +1,5 @@
+import { Template } from "nunjucks"
+
 export interface SiteInfo {
   assets: Info[]
   templates: Info[]
@@ -45,4 +47,4 @@ export interface Page extends Base, PagePredefinedAttributes {
 }
 
 
-export type TemplateMap = Map<string, HandlebarsTemplateDelegate>
+export type TemplateMap = Map<string, Template>
