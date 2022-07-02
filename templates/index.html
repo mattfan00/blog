@@ -18,7 +18,7 @@
         {% if "posts" in page.categories %}
         <a class="row plain" href="{{ page.url }}">
           <div class="title">{{ page.title }}</div>
-          <div>{{ page.date }}</div>
+          <div>{{ page.date | formatDate("MMM D, YYYY") }}</div>
         </a>
         {% endif %}
         {% endfor %}

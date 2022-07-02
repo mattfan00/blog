@@ -18,6 +18,8 @@ const md = new MarkdownIt("commonmark")
 
 const nunjucksEnv = nunjucks.configure({ autoescape: false })
 
+nunjucksEnv.addFilter("formatDate", (date: Dayjs, formatStr: string) => date.format(formatStr))
+
 export const read = (): Site => {
   const assets: Asset[]  = file.within(constants.PATH_ASSETS, () => file.readDirRecursive("."))
     .map(p => {
