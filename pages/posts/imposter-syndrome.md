@@ -1,7 +1,7 @@
 ---
 
-title: "the imposter"
-date: "Sep 29, 2020"
+title: the imposter
+date: 2020-09-29
 layout: post
 related_content:
   - name: "Programmer Imposter Syndrome"

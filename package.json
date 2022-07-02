@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/markdown-it": "^12.2.3",
     "@types/nunjucks": "^3.2.1",
+    "dayjs": "^1.11.3",
     "front-matter": "^4.0.2",
     "markdown-it": "^11.0.0",
     "nodemon": "^2.0.7",

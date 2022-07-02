@@ -1,4 +1,5 @@
 import { Template } from "nunjucks"
+import { Dayjs } from "dayjs"
 
 export interface SiteInfo {
   assets: Info[]
@@ -37,7 +38,7 @@ export interface Asset extends Base {}
 export interface PagePredefinedAttributes{
   title: string
   layout: string
-  date: string
+  date: Dayjs
   categories: string[]
 }
 

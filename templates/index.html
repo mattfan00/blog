@@ -14,7 +14,7 @@
       <h3>Matthew Fan</h3>
 
       <div class="directory">
-        {% for page in site.pages | sort(false, true, "date") %}
+        {% for page in site.pages %}
         {% if "posts" in page.categories %}
         <a class="row plain" href="{{ page.url }}">
           <div class="title">{{ page.title }}</div>

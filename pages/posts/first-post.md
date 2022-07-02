@@ -1,7 +1,7 @@
 ---
 
-title: "first post"
-date: "Jul 27, 2020"
+title: first post
+date: 2020-07-27
 layout: post
 related_content:
   - name: "Pine Wu's blog"

@@ -1,7 +1,7 @@
 ---
 
-title: "one year"
-date: "Dec 24, 2020"
+title: one year
+date: 2020-12-24
 layout: post
 related_content:
   - name: "The Web Developer Bootcamp"

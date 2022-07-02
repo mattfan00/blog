@@ -2,6 +2,7 @@ import path from "path"
 import fm from "front-matter"
 import MarkdownIt from "markdown-it"
 import nunjucks from "nunjucks"
+import dayjs, { Dayjs } from "dayjs"
 import * as file from "./utils/file"
 import fs from "fs"
 import * as constants from "./utils/constants"
@@ -65,6 +66,8 @@ export const read = (): Site => {
       if (!templates.get(layout))
         throw new Error(`Template '${layout}' in '${fullPath}' does not exist`)
 
+      const dateObj = date ? dayjs(date) : dayjs(fs.statSync(fullPath).birthtime)
+
       return {
         path: fullPath,
         dir: dir,
@@ -77,7 +80,7 @@ export const read = (): Site => {
         url: path.join("/", parsedPath.dir,parsedPath.name),
         title: title,
         layout: layout,
-        date: date,
+        date: dateObj,
         categories: categories ? categories : file.listDirs(p),
         attributes: restAttributes
       }
@@ -120,13 +123,15 @@ export const generate = (site: Site) => {
       },
       site: {
         assets: site.assets,
-        pages: site.pages.map(page => ({
-          title: page.title,
-          layout: page.layout,
-          date: page.date,
-          categories: page.categories,
-          url: page.url
-        }))
+        pages: site.pages
+          .sort((a, b)=> b.date.unix() - a.date.unix())
+          .map(page => ({
+            title: page.title,
+            layout: page.layout,
+            date: page.date,
+            categories: page.categories,
+            url: page.url
+          }))
       }
     })
 
