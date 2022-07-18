@@ -70,8 +70,19 @@ a.plain {
   margin-bottom: 0.5rem;
 }
 
-.title-section .date {
+.title-section .details {
+  display: flex;
+  flex-direction: row;
   font-size: 0.8rem;
+}
+
+.title-section .details .name {
+  color: var(--main-color);
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+.title-section .details .date {
   color: var(--secondary-color);
 }
 
