@@ -3,13 +3,6 @@
 title: First Post
 date: 2020-07-27
 layout: post
-related_content:
-  - name: "Pine Wu's blog"
-    url: "https://blog.matsu.io/"
-    description: "posts about Vue and life"
-  - name: "Mark Bacon YouTube channel"
-    url: "https://www.youtube.com/channel/UCh7mi5sI3BSzKReLzXpgimA"
-    description: "great insight into productivity and motivation"
 
 ---
 

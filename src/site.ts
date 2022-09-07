@@ -105,7 +105,18 @@ export const generate = (site: Site) => {
     fs.copyFileSync(asset.path, path.join(destDir, asset.base))
   })
 
+  const refinedPages = [...site.pages]
+    .sort((a, b)=> b.date.unix() - a.date.unix())
+    .map(page => ({
+      title: page.title,
+      layout: page.layout,
+      date: page.date,
+      categories: page.categories,
+      url: page.url
+    }))
+
   site.pages.forEach(page => {
+    console.log(page.name)
     let destDir = path.join(constants.PATH_PUBLIC, path.parse(page.pathRelative).dir)
     if (page.name !== "index")
       destDir = path.join(destDir, page.name)
@@ -125,15 +136,7 @@ export const generate = (site: Site) => {
       },
       site: {
         assets: site.assets,
-        pages: site.pages
-          .sort((a, b)=> b.date.unix() - a.date.unix())
-          .map(page => ({
-            title: page.title,
-            layout: page.layout,
-            date: page.date,
-            categories: page.categories,
-            url: page.url
-          }))
+        pages: refinedPages
       }
     })
 
