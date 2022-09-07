@@ -87,12 +87,11 @@ a.plain {
 }
 
 
-.content p, .content ol, .related-content  {
+.content p, .content ol, .content ul {
   line-height: 1.6;
 }
 
-.content ol {
-  margin: 2rem 0;
+.content ol, .content ul {
   padding: 0 3rem;
 }
 

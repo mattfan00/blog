@@ -1,6 +1,6 @@
 ---
 
-title: first post
+title: First Post
 date: 2020-07-27
 layout: post
 related_content:
@@ -19,7 +19,7 @@ Welcome to the first post of my blog. I've been meaning to create a blog for a w
 
 For now, let's get into why I decided to create a blog.
 
-### why?
+### Why?
 
 There are two main resources that finally pushed me to create a blog.
 
@@ -29,7 +29,7 @@ The second resource is one of my friends from college, Mark Bacon ([here](https:
 
 So after all that, I encourage whoever is reading this to go check them out and hopefully you enjoy viewing their content as much as I do!
 
-### goals
+### Goals
 
 So I don't plan on this blog being very structured. I want to be able to write about anything that comes to mind at anytime. So that means I don't want to stick to a planned schedule since that might cause this blog to feel like a chore. With that, I want to go into some of the goals I have.
 
@@ -40,7 +40,7 @@ So I don't plan on this blog being very structured. I want to be able to write a
 
 Hopefully I will be able to stick to these goals, but only time will tell!
 
-### why build my own site?
+### Why Build My Own Site?
 
 Finally I would like touch on a topic mentioned in the beginning of this post, which is why e decided to create my own static-site generator. There are a variety of static-site generators (SSGs) around, some of the most popular being Jekyll and Hugo.
 
@@ -54,8 +54,13 @@ If I were to use Hugo, or any other SSG out there, sure I would be able to creat
 
 The reason I included my ideas about React is to show that making things the traditional way does not just apply to this SSG, but also to many of the technologies we use everyday. It's important to always remember why things are the way they are and how they are made up. I personally have a tendency to use these technologies without thinking why and only thinking about how popular they are. I'm happy that I made my own SSG because it's a small step away from that.
 
-### conclusion
+### Conclusion
 
 This post is starting to get very long and might not make much sense towards the end so I will start wrapping it up now (I don't plan on making these posts that long in the future). If you got to the end, thank you for sticking around! I hope that you didn't force yourself to read all of this and actually found it enjoyable :)
 
 Stay tuned for the next one!
+
+### Related Content
+
+- [Pine Wu's blog](https://blog.matsu.io/) - posts about Vue and life
+- [Mark Bacon YouTube channel](https://www.youtube.com/channel/UCh7mi5sI3BSzKReLzXpgimA) - great insight into productivity and motivation

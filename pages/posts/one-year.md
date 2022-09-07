@@ -1,21 +1,8 @@
 ---
 
-title: one year
+title: One Year
 date: 2020-12-24
 layout: post
-related_content:
-  - name: "The Web Developer Bootcamp"
-    url: "https://www.udemy.com/course/the-web-developer-bootcamp/"
-    description: "my first web dev Udemy course"
-  - name: "It's okay to be unproductive"
-    url: "https://www.youtube.com/watch?v=9-XkF1so5rI"
-    description: "feel free to take a break from coding / YouTube video from mayuko"
-  - name: "Brad Traversy YouTube channel"
-    url: "https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA"
-    description: "makes many great web dev tutorials"
-  - name: "Fireship YouTube channel"
-    url: "https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA"
-    description: "learn about trending technologies quickly"
 
 ---
 
@@ -31,10 +18,17 @@ I wanted to write this blog post to share some of the tips I gathered along the 
 1. **Learn a little bit of everything.** At the start, it is important to expand your knowledge by breadth, instead of depth. There are so many different fields within coding and finding which one you like is only possible by experimenting with a little bit of everything. Be open to trying new things and if a couple of weeks go by and you realize you don't like it, feel free to move on. Those weeks weren't wasted since you **a)** are closer to finding what you are really passionate about, **b)** know enough where you can talk about it with others who work with it extensively, and **c)** maybe impress people with how much you know ;)
 1. **Don't take it too seriously.** You are coding because you enjoy it. I sometimes get too caught up in looking at what other people do and forget that I am coding because I want to. Have some fun with your learning experience, don't compare yourself to others, and build something wacky.
 
-### conclusion
+### Conclusion
 
 Those were most of the tips I wanted to share with y'all today. If I come up with anymore in the future, I will be sure to update this post with them!
 
 Although I am still very young and have not coded that much relative to others, I still feel like I learned so much in this past year. I not only learned about the various technologies out there, but also learned a lot about myself and what I want. Hopefully I will continue this blog long enough to write a year two post :)
 
 See ya!
+
+### Related Content
+
+- [The Web Developer Bootcamp](https://www.udemy.com/course/the-web-developer-bootcamp/) - my first web dev Udemy course
+- [It's okay to be unproductive](https://www.youtube.com/watch?v=9-XkF1so5rI) - feel free to take a break from coding / YouTube video from mayuko
+- [Brad Traversy YouTube channel](https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA) - makes many great web dev tutorials
+- [Fireship YouTube channel](https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA) - learn about trending technologies quickly
