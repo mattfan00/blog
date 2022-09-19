@@ -1,7 +1,7 @@
 ---
 
 title: One Year
-date: 2020-12-24
+date: 2020-12-24T00:00:00-0500
 layout: post
 
 ---

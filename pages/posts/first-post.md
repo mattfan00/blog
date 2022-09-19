@@ -1,7 +1,7 @@
 ---
 
 title: First Post
-date: 2020-07-27
+date: 2020-07-27T00:00:00-0400
 layout: post
 
 ---
