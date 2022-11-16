@@ -1,32 +1,17 @@
 {
-  "name": "blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.ts",
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "concurrently \"http-server -s -p 3000 ./public\" \"nodemon src/index.ts\"",
-    "build": "tsc --outDir build && node build/index.js"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@types/markdown-it": "^12.2.3",
-    "@types/nunjucks": "^3.2.1",
-    "dayjs": "^1.11.3",
-    "front-matter": "^4.0.2",
-    "markdown-it": "^11.0.0",
-    "nodemon": "^2.0.7",
-    "nunjucks": "^3.2.3"
-  },
-  "devDependencies": {
-    "@types/node": "^18.0.0",
-    "concurrently": "^7.2.0",
-    "http-server": "^14.1.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
-  },
-  "nodemonConfig": {
-    "ignore": "./public",
-    "ext": "ts,json,html,md,css"
+    "astro": "^1.6.8",
+    "dayjs": "^1.11.6"
   }
 }

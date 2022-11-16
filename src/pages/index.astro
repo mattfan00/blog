@@ -1,0 +1,40 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import type { PostFrontmatter } from "../types";
+import { formatDate } from "../utils";
+import dayjs from "dayjs";
+
+const posts = await Astro.glob<PostFrontmatter>("../pages/posts/*.md")
+posts.sort((a, b) => {
+	return dayjs(b.frontmatter.date).valueOf() - dayjs(a.frontmatter.date).valueOf();
+})
+---
+
+<SiteLayout>
+	<h3>Matthew Fan</h3>
+
+	<div class="directory">
+		{posts.map(post => (
+			<a class="row plain" href={post.url}>
+				<div class="title">{post.frontmatter.title}</div>
+				<div>{formatDate(post.frontmatter.date)}</div>
+			</a>
+		))}
+	</div>
+</SiteLayout>
+
+<style>
+	.directory {
+		margin-top: 1.5rem;
+	}
+
+	.directory .row {
+		margin-bottom: 0.5rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.directory .row .title {
+		margin-right: 2rem;
+	}
+</style>

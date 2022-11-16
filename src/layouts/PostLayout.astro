@@ -1,0 +1,49 @@
+---
+import SiteLayout from "./SiteLayout.astro";
+import type { MarkdownLayoutProps } from "astro";
+import type { PostFrontmatter } from "../types";
+import { formatDate } from "../utils";
+
+type Props = MarkdownLayoutProps<PostFrontmatter>;
+
+const { frontmatter } = Astro.props;
+---
+
+<SiteLayout>
+  <div class="title-section">
+    <h2 class="title">{frontmatter.title}</h2>
+    <div class="details">
+      <a class="name" href="/">Matthew Fan</a>
+      <div class="date">{formatDate(frontmatter.date)}</div>
+    </div>
+  </div>
+  <div class="content">
+    <slot/>
+  </div>
+</SiteLayout>
+
+<style>
+  .title-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .title-section .title {
+    margin-bottom: 0.5rem;
+  }
+
+  .title-section .details {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+  }
+
+  .title-section .details .name {
+    color: var(--main-color);
+    margin-right: 12px;
+    text-decoration: none;
+  }
+
+  .title-section .details .date {
+    color: var(--secondary-color);
+  }
+</style>
