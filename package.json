@@ -8,14 +8,20 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky install"
   },
   "dependencies": {
     "astro": "^1.6.8",
     "dayjs": "^1.11.6"
   },
   "devDependencies": {
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.7.0"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
   }
 }
